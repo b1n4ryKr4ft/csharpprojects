@@ -51,4 +51,61 @@ foreach (var pallet in pallets)
 {
     Console.WriteLine($"-- {pallet}");
 }
+
+[+] 003
+=======
+string value = "abc123";
+char[] valueArray = value.ToCharArray();
+Array.Reverse(valueArray);
+// string result = new string(valueArray);
+string result = String.Join(",", valueArray);
+Console.WriteLine(result);
+
+string[] items = result.Split(',');
+foreach (string item in items)
+{
+    Console.WriteLine(item);
+}
+
+[+] 004
+=======
+string pangram = "The quick brown fox jumps over the lazy dog";
+
+// Step 1
+string[] message = pangram.Split(' ');
+
+//Step 2
+string[] newMessage = new string[message.Length];
+
+// Step 3
+for (int i = 0; i < message.Length; i++)
+{
+    char[] letters = message[i].ToCharArray();
+    Array.Reverse(letters);
+    newMessage[i] = new string(letters);
+}
+
+//Step 4
+string result = String.Join(" ", newMessage);
+Console.WriteLine(result);
 */
+
+using System;
+
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+
+var orderIDs = orderStream.Split(',');
+
+Array.Sort(orderIDs);
+
+foreach(var id in orderIDs){
+
+    var chA = id.ToCharArray();
+
+    if(chA.Length != 4){
+        Console.WriteLine($"{id}\t- Error");
+    }
+    else{
+        Console.WriteLine(id);
+    }
+}
